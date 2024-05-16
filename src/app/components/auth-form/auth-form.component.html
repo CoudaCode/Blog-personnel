@@ -1,0 +1,95 @@
+<form
+  action="#"
+  class="max-w-md mx-auto mt-8 mb-0 space-y-4"
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+>
+  <!-- Add the import statement for CommonModule -->
+  @if (formType === 'register') {
+  <div>
+    <label for="username" class="block mb-2 text-sm font-medium text-gray-400"
+      >Username</label
+    >
+    <input
+      type="text"
+      formControlName="username"
+      id="username"
+      class="bg-gray-700 border border-gray-500 text-gray-100 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-50 focus:border-gray-500 block w-full p-2.5"
+      placeholder="Bonnie Green"
+    />
+
+    @if ((form.get('username')?.invalid && (form.get('username')?.dirty ||
+    form.get('username')?.touched))) {
+
+    <p class="mt-2 text-sm text-red-600">
+      <span class="font-medium">Oops!</span> {{ getMessageError("username") }}
+    </p>
+    }
+  </div>
+  }
+
+  <div>
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-400"
+      >email</label
+    >
+    <input
+      type="email"
+      formControlName="email"
+      id="email"
+      class="bg-gray-700 border border-gray-500 text-gray-100 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-50 focus:border-gray-500 block w-full p-2.5"
+      placeholder="Bonnie Green"
+    />
+
+    @if ((form.get('email')?.invalid && (form.get('email')?.dirty ||
+    form.get('email')?.touched))) {
+
+    <p class="mt-2 text-sm text-red-600">
+      <span class="font-medium">Oops!</span> {{ getMessageError("email") }}
+    </p>
+    }
+  </div>
+
+  <div>
+    <label for="password" class="block mb-2 text-sm font-medium text-gray-400"
+      >password</label
+    >
+    <input
+      type="password"
+      formControlName="password"
+      id="password"
+      class="bg-gray-700 border border-gray-500 text-gray-100 placeholder-gray-700 text-sm rounded-lg focus:ring-gray-50 focus:border-gray-500 block w-full p-2.5"
+      placeholder="Bonnie Green"
+    />
+
+    @if ((form.get('password')?.invalid && (form.get('password')?.dirty ||
+    form.get('password')?.touched))) {
+
+    <p class="mt-2 text-sm text-red-600">
+      <span class="font-medium">Oops!</span> {{ getMessageError("password") }}
+    </p>
+    }
+  </div>
+
+  <div class="flex items-center justify-between">
+    @if(formType === "login"){
+    <p class="text-sm text-gray-300">
+      Pas de compte ?
+      <a class="underline" routerLink="/register">S'inscrire</a>
+    </p>
+    } @if(formType === "register"){
+    <p class="text-sm text-gray-300">
+      J'ai déjà un compte ?
+      <a class="underline" routerLink="/login">Se connecter</a>
+    </p>
+    }
+
+    <button
+      type="submit"
+      [disabled]="!form.valid"
+      class="inline-block px-5 py-3 text-sm font-medium text-white rounded-lg bg-btn-color"
+    >
+      @if (formType === 'register') { inscription } @if (formType === 'login') {
+      connexion }
+    </button>
+  </div>
+</form>
