@@ -14,6 +14,8 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.css',
 })
+
+
 export class AuthFormComponent {
   @Input() formType: 'register' | 'login' = 'login';
   @Output() formSubmit = new EventEmitter<object>();

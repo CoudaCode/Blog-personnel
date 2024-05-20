@@ -5,8 +5,8 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './all-articles.component.html',
-  styleUrl: './all-articles.component.css'
+  styleUrl: './all-articles.component.css',
 })
 export class AllArticlesComponent {
-
+  name: string = 'Couda Code';
 }
